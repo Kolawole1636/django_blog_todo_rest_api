@@ -1,0 +1,62 @@
+{% extends 'blog_base.html' %}
+
+
+{% block content %}
+
+<h1 style="margin-left: 180px; margin-top: 50px;"  class="btn btn-primary">Welcome To My Calculator App</h1>
+<br><br>
+<!-- <form action="add" method="post">
+    {% csrf_token %}
+    value1:<input type="text" name="val1"><br><br>
+    value2:<input type="text" name="val2"><br><br>
+    <input type="submit">
+</form> -->
+
+
+<div class="container">
+
+    <form action="add" method="post">
+        {% csrf_token %}
+
+        <div class="row mb-4">
+            <div class="col-sm-4">
+              <input type="text" name="val1" class="form-control" id="inputEmail3" placeholder="Value1">
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-sm-4">
+              <select name="opr">
+
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="x">*</option>
+                <option value="/">/</option>
+                <option value="sqrt">Sqrt</option>
+                <option value="pow">^</option>
+                <option value="hyp">Hyp</option>
+                <option value="sin">Sin</option>
+                <option value="cos">Cos</option>
+                <option value="tan">Tan</option>
+               
+
+              </select>
+            </div>
+          </div>
+  
+          <div class="row mb-4">
+              <div class="col-sm-4">
+                <input type="text"  name="val2"class="form-control" id="inputEmail3" placeholder="value2">
+              </div>
+            </div>
+   
+        <button  type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+    </div>
+<br>
+
+
+<h1 style="color:white; margin-left:120px">The Result Is: {{result}} </h1>
+
+
+{% endblock %}

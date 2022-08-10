@@ -1,0 +1,43 @@
+{% extends 'blog_base.html' %}
+{% load static %}
+
+
+
+  {% block content %}
+    
+
+    <marquee><h1 class="white">Welcome To Kolatech Blog Site</h1></marquee>
+
+
+   <!--  <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button> -->
+
+
+    <br><br>
+
+
+    {% for blog in blogs %}
+    <div class="container">
+
+        <div class="card" style="width: 18rem;">
+          <br>
+            <h3>Blog post by <span class="btn btn-danger">{{blog.author}}</span></h3><br>
+            <img class="card-img-top" src="{{blog.urlImage}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{blog.title}}</h5>
+              <p class="card-text">{{blog.desc}}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h4>Created on {{blog.created_on}}</h4>
+            </div><br><br>
+
+        </div>
+
+        
+    </div><br><br>
+    {% endfor %}
+
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    {% endblock %}
+

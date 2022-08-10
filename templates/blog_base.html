@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    {% include 'nav.html' %}
+    <style>
+        body{
+            background-color:purple;
+        }
+        .white{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+   
+    {% block content %}
+
+    <marquee><h1 class="white">Welcome To Kolatech Blog Site</h1></marquee>
+
+
+   <!--  <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button> -->
+
+
+    <br><br>
+
+    
+    {% endblock %}
+</body>
+</html>

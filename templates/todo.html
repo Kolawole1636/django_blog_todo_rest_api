@@ -1,0 +1,89 @@
+{% extends 'blog_base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <style>
+        body{
+            background-color:purple;
+        }
+        .white{
+            color: white;
+        }
+    </style>
+</head>
+<body background="">
+    
+{%  block content %}
+    <br><br>
+<h4 style="margin-left: 190px;"  class="btn btn-success">Welcome To My Todo App</h4>
+<br><br>
+
+    <div class="container">
+
+    <form action="createtodo" method="post">
+        {% csrf_token %}
+
+        <div class="row mb-4">
+            <div class="col-sm-4">
+              <input type="text" name="todo" class="form-control" id="inputEmail3" placeholder="What will you like to do ?"><br>
+              <input  type="submit" value="Submit" class="btn btn-primary">
+              
+            </div>
+          </div>
+  
+          <div class="row mb-4">
+              <div class="col-sm-4">
+        
+              </div>
+            </div>
+      </form>
+
+      <table border="2" style="background-color: white;">
+       
+        <tr>
+            <td style="color:green ;"><h5>Title</h5></td>
+            <td style="color:green ;"><h5>Created</h5></td>
+        </tr>
+        {% for todo in todos %}
+
+        <tr>
+            {% if todo.completed %}
+            <td style="color:blue ;"><strike >{{todo.title}}</strike></td>
+            {% else %}
+            <td><h4 style="color:blue;">{{todo.title}}</h4></td>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td><h6 style="color:blue ;">{{todo.created}}</h6></td>
+            <td><a href="{%url 'updatetodo' todo.id %}" class="btn btn-warning">Update</a></td>
+            <td><a href="{%url 'deletetodo' todo.id %}" class="btn btn-danger">Delete</a></td>
+ 
+        </tr>
+        {% endfor %}
+      </table>
+      
+
+        <!--{% for todo in todos %}
+        {% if todo.completed %}
+      <strike><h4 style="color:white ;">{{todo.title}}</h4></strike>
+      {% else %}
+      <h4 style="color:white ;">{{todo.title}}</h4>
+      {% endif %}
+      <a href="{%url 'updatetodo' todo.id %}" class="btn btn-warning">Update</a>
+      <a href="{%url 'deletetodo' todo.id %}" class="btn btn-danger">Delete</a>
+        <p style="color:white ;">{{todo.created}}</p>
+        {% endfor %}-->
+    </div>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    {% endblock %}
+</body>
+</html>
